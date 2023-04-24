@@ -4,8 +4,12 @@ const PostModel = require("../models/postSchema");
 const getAllPost = async (req, res) => {
   const allPost = await PostModel.find().sort([["date", -1]]); // date now
   if (!allPost) return res.status(204).json({ message: "No post found." });
-  res.json(allPost);
+  res.render('allPostPage', { allPost });
 };
+
+const createPostForm = async (req, res) => {
+  res.render('createPostPage')
+}
 
 const createPost = async (req, res) => {
   // Verify
@@ -76,7 +80,7 @@ const getPostById = async (req, res) => {
       .json({ message: `No Post match ID ${req.params.id}.` });
   }
 
-  res.json(postID);
+  res.render('postId', {postID});
 
   // const { id } = req.params; // can use to tell url param
   // res.send(`Single post id = ${id}`);
@@ -109,4 +113,5 @@ module.exports = {
   updatePost,
   getPostById,
   deletePost,
+  createPostForm
 };

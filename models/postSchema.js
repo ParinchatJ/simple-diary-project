@@ -16,14 +16,7 @@ const postSchema = new mongoose.Schema({
   tell_story: {
     type: String,
     require: true
-  },
-  emoji: {
-    type: String,
-    enum: {
-      values: [0, 1, 2, 3, 4, 5, 6, 7],
-      message: "Is not emoji to support!",
-    },
-  },
+  }
 });
 
 module.exports = new mongoose.model("post", postSchema);

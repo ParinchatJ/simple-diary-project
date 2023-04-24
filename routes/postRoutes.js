@@ -7,6 +7,7 @@ const postController = require('../controllers/postControllers')
 postRoute.get('/', postController.getAllPost)
 
 // (3) create post
+postRoute.get('/new', postController.createPostForm)
 postRoute.post('/new', postController.createPost)
 
 // (6) edit post
