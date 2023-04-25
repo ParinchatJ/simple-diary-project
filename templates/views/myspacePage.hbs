@@ -9,7 +9,25 @@
 <body>
     <div class="main-container" style="background-color: rgb(184, 224, 211);">
         {{>header}}
-        {{ user }}
+        {{#each user as |user|}}
+            <h2>Hello {{user.name}}</h2>         
+            <span>
+                <p>{{user.date_of_birth}}</p>
+                <p>{{user.goal}}</p>
+                <p>{{user.inspiration}}</p>
+            </span>
+        {{/each}}
+        
+        {{#each post3ID as |post3ID|}}
+            <h2>MyDiary</h2>         
+            <span>
+                <p>{{post3ID.name}}</p>
+                <p>{{post3ID.date}}</p>
+                <p>{{post3ID.topic}}</p>
+                <p>{{post3ID.tell_story}}</p>
+            </span>
+        {{/each}}
+
     </div>
     {{>footer}}
 </body>

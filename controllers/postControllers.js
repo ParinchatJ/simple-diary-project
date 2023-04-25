@@ -26,15 +26,18 @@ const createPost = async (req, res) => {
       name: req.body.name,
       date: req.body.date,
       topic: req.body.topic,
-      tell_story: req.body.tell_story,
-      emoji: req.body.emoji,
+      tell_story: req.body.tell_story
     });
 
-    res.status(201).json(resultPost);
+    res.status(201).redirect('/post/new/done')
   } catch (error) {
     console.error(`Error to create post = ${error}`);
   }
 };
+
+const postNewDone = async (req, res) => {
+  res.render('createPostDonePage')
+}
 
 const updatePost = async (req, res) => {
   const { name, date, topic, tell_story, emoji } = req.body;
@@ -113,5 +116,6 @@ module.exports = {
   updatePost,
   getPostById,
   deletePost,
-  createPostForm
+  createPostForm,
+  postNewDone
 };

@@ -5,7 +5,7 @@ const homeSchema = new mongoose.Schema({
   {
     type: String,
     required: true,
-    unique: true,
+    unique: true
   },
   date_of_birth: Date,
   goal: String,

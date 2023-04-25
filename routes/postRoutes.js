@@ -9,6 +9,7 @@ postRoute.get('/', postController.getAllPost)
 // (3) create post
 postRoute.get('/new', postController.createPostForm)
 postRoute.post('/new', postController.createPost)
+postRoute.get('/new/done', postController.postNewDone)
 
 // (6) edit post
 postRoute.patch('/new', postController.updatePost)
