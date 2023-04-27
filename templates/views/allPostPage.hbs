@@ -13,8 +13,13 @@
         {{!-- loop all post --}}
         {{#each allPost}}
             <div style="background-color: rgb(232, 184, 213);">
-                
-                <h4><a href="/post/{{ this.id }}">{{this.name}}</a></h4>
+                <div>
+                    <h4><a href="/post/{{ this.id }}">{{this.name}}</a></h4>
+                    <div>
+                        <a href="/post/delete/{{ this.id }}">Delete</a>
+                    </div>
+
+                </div>
                 <p>
                     <span>{{this.date}} | </span>
                     <span>{{this.topic}}</span>

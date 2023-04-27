@@ -1,5 +1,6 @@
 const PostModel = require("../models/postSchema");
 
+// GET ALL POST
 
 const getAllPost = async (req, res) => {
   const allPost = await PostModel.find().sort([["date", -1]]); // date now
@@ -7,6 +8,7 @@ const getAllPost = async (req, res) => {
   res.render('allPostPage', { allPost });
 };
 
+// CREATE POST
 const createPostForm = async (req, res) => {
   res.render('createPostPage')
 }
@@ -29,7 +31,7 @@ const createPost = async (req, res) => {
       tell_story: req.body.tell_story
     });
 
-    res.status(201).redirect('/post/new/done')
+    res.status(201).redirect('/post/new/done').json(resultPost)
   } catch (error) {
     console.error(`Error to create post = ${error}`);
   }
@@ -39,8 +41,13 @@ const postNewDone = async (req, res) => {
   res.render('createPostDonePage')
 }
 
+// UPDATE POST
+const updatePostForm = async (req, res) => {
+  res.render('updatePostPage')
+}
+
 const updatePost = async (req, res) => {
-  const { name, date, topic, tell_story, emoji } = req.body;
+  const { name, date, topic, tell_story, emoji } = req.bod ?? {}
 
   // Verify
   // dont have ID
@@ -65,8 +72,14 @@ const updatePost = async (req, res) => {
   if (emoji) postID.emoji = emoji;
 
   const result = await postID.save();
-  res.json(result);
+  res.redirect('/post/update/done');
 };
+
+const updatePostDone = async (req, res) => {
+  res.render('updatePostDone')
+}
+
+// GET POST BY ID
 
 const getPostById = async (req, res) => {
   if (!req?.params?.id) {
@@ -89,25 +102,28 @@ const getPostById = async (req, res) => {
   // res.send(`Single post id = ${id}`);
 };
 
+
+// DELETE POST
+
 const deletePost = async (req, res) => {
   // Verify
   // dont have ID
-  if (!req?.body?.id) {
+  if (!req?.params?.id) {
     return res.status(400).json({
       message: "ID parameter is required.",
     });
   }
 
-  const postID = await PostModel.findOne({ _id: req.body.id }).exec();
+  const postID = await PostModel.findOne({ _id: req.params.id }).exec();
   // cant find ID match
   if (!postID) {
     return res
       .status(204)
-      .json({ message: `No Post match ID ${req.body.id}.` });
+      .json({ message: `No Post match ID ${req.params.id}.` });
   }
 
-  const result = await postID.deleteOne({ _id: req.body.id });
-  res.json(result);
+  const result = await postID.deleteOne({ _id: req.params.id });
+  res.redirect('/post')
 };
 
 module.exports = {
@@ -117,5 +133,7 @@ module.exports = {
   getPostById,
   deletePost,
   createPostForm,
-  postNewDone
+  postNewDone,
+  updatePostForm,
+  updatePostDone
 };
