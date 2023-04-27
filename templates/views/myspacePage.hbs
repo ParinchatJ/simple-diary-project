@@ -12,14 +12,16 @@
         {{#each user as |user|}}
             <h2>Hello {{user.name}}</h2>         
             <span>
-                <p>{{user.date_of_birth}}</p>
-                <p>{{user.goal}}</p>
-                <p>{{user.inspiration}}</p>
+                <p>GOAL : {{user.goal}}</p>
+                <p>INSPIRATION : {{user.inspiration}}</p>
             </span>
         {{/each}}
         
+            <h2>MyDiary</h2> 
+
+            {{!-- เอาปุ่มแก้และลบมาใส่ตรงนี้ ตอนทำ css  --}}
+            
         {{#each post3ID as |post3ID|}}
-            <h2>MyDiary</h2>         
             <span>
                 <p>{{post3ID.name}}</p>
                 <p>{{post3ID.date}}</p>

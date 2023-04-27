@@ -42,27 +42,43 @@ const postNewDone = async (req, res) => {
 }
 
 // UPDATE POST
-const updatePostForm = async (req, res) => {
-  res.render('updatePostPage')
-}
 
 const updatePost = async (req, res) => {
-  const { name, date, topic, tell_story, emoji } = req.bod ?? {}
-
   // Verify
   // dont have ID
-  if (!req?.body?.id) {
+  if (!req?.params?.id) {
     return res.status(400).json({
       message: "ID parameter is required.",
     });
   }
 
-  const postID = await PostModel.findOne({ _id: req.body.id }).exec();
+  const postID = await PostModel.findOne({ _id: req.params.id }).exec();
   // cant find ID match
   if (!postID) {
     return res
       .status(204)
-      .json({ message: `No Post match ID ${req.body.id}.` });
+      .json({ message: `No Post match ID ${req.params.id}.` });
+  }
+
+  res.render('updatePostPage', { postID });
+};
+
+// update post save
+const editPostSave = async (req, res) => {
+  const { name, date, topic, tell_story, emoji } = req.body ?? {}
+
+  if (!req?.params?.id) {
+    return res.status(400).json({
+      message: "ID parameter is required.",
+    });
+  }
+
+  const postID = await PostModel.findOne({ _id: req.params.id }).exec();
+  // cant find ID match
+  if (!postID) {
+    return res
+      .status(204)
+      .json({ message: `No Post match ID ${req.params.id}.` });
   }
 
   if (name) postID.name = name;
@@ -70,12 +86,8 @@ const updatePost = async (req, res) => {
   if (topic) postID.topic = topic;
   if (tell_story) postID.tell_story = tell_story;
   if (emoji) postID.emoji = emoji;
-
+  
   const result = await postID.save();
-  res.redirect('/post/update/done');
-};
-
-const updatePostDone = async (req, res) => {
   res.render('updatePostDone')
 }
 
@@ -134,6 +146,5 @@ module.exports = {
   deletePost,
   createPostForm,
   postNewDone,
-  updatePostForm,
-  updatePostDone
+  editPostSave
 };

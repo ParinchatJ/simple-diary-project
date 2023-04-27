@@ -4,16 +4,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create diary</title>
+    <title>Edit diary</title>
 </head>
 <body>
     {{>header}}
      <div class="main-container" style="background-color: rgb(184, 224, 211);">
-        <h1>Create Your Diary</h1>
-        <p>มาเก็บความทรงจำกันเถอะ</p>
-        <form action="/post/new" method="post">
+        <h1>Edit Your Diary</h1>
+        <p>แก้ไขความทรงจำ</p>
+
+        {{!-- method with is pull value you choose --}}
+        {{#with postID}}
+        <form action="/post/update/{{this.id}}" method="post"> 
             {{>form}}
         </form>
+        {{/with}}
     </div>
     {{>footer}}
 </body>
