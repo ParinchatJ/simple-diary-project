@@ -6,16 +6,20 @@ const getQuestionPre = async (req, res) => {
 }
 
 const postQuestionPre = async (req, res) => {
-  if (!req?.body?.name) {
-    return res.status(400).json({ message: "Name is required!" });
-  }
 
+  const { name, date_of_birth, goal, inspiration } = req.body ?? {}
+
+  // Validate
   try {
+    if (!req?.body?.name) {
+      return res.status(400).render('knowYouPage', { message: "Name is required!" , name, date_of_birth, goal, inspiration })
+    }
+    
     const result = await UserModel.create({
-      name: req.body.name,
-      date_of_birth: req.body.date_of_birth,
-      goal: req.body.goal,
-      inspiration: req.body.inspiration,
+      name: name,
+      date_of_birth: date_of_birth,
+      goal: goal,
+      inspiration: inspiration,
     });
 
     res.status(201).redirect('/myspace')

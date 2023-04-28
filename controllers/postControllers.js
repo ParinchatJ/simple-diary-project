@@ -14,27 +14,31 @@ const createPostForm = async (req, res) => {
 }
 
 const createPost = async (req, res) => {
-  // Verify
-  if (!req?.body?.name || !req?.body?.date) {
-    return res.status(400).json({ message: "Name and Date are requires!" });
-  }
 
-  if (!req?.body?.tell_story || !req?.body?.topic) {
-    return res.status(400).json({ message: "You can tell something story?" });
-  }
+  const { name, date, topic, tell_story } = req.body ?? {}
 
+  // Validate
   try {
+    if (!req?.body?.name || !req?.body?.date) {
+      return res.status(400).render('createPostPage', { message: "Name and date are required!" , name, date, topic, tell_story })
+    }
+  
+    if (!req?.body?.tell_story || !req?.body?.topic) {
+      return res.status(400).render('createPostPage', { message: "Topic and storry are required!", name, date, topic, tell_story })
+    }
+
     const resultPost = await PostModel.create({
-      name: req.body.name,
-      date: req.body.date,
-      topic: req.body.topic,
-      tell_story: req.body.tell_story
+      name: name,
+      date: date,
+      topic: topic,
+      tell_story: tell_story
     });
 
-    res.status(201).redirect('/post/new/done').json(resultPost)
   } catch (error) {
     console.error(`Error to create post = ${error}`);
   }
+
+  res.status(201).redirect('/post/new/done')
 };
 
 const postNewDone = async (req, res) => {
@@ -118,7 +122,7 @@ const getPostById = async (req, res) => {
 // DELETE POST
 
 const deletePost = async (req, res) => {
-  // Verify
+  // Validate
   // dont have ID
   if (!req?.params?.id) {
     return res.status(400).json({

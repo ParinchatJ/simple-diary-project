@@ -14,6 +14,9 @@
         <form action="/post/new" method="post">
             {{>form}}
         </form>
+        {{#if message}}
+            <p>{{ message }}</p>
+        {{/if}}
     </div>
     {{>footer}}
 </body>

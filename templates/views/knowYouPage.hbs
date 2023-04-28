@@ -13,22 +13,24 @@
         <p>Nice to first meet you!!</p>
         <form action="/" method="post">
             <p>
-                <input type="text" name="name" placeholder="name">
+                <input type="text" name="name" value="{{this.name}}" placeholder="name">
             </p>
             <p>
-                <input type="date" name="date_of_birth">
+                <input type="date" name="date_of_birth" value="{{this.date_of_birth}}">
             </p>
             <p>
-                <input type="text" name="goal" placeholder="goal">
+                <input type="text" name="goal" value="{{this.goal}}" placeholder="goal">
             </p>
             <p>
-                <input type="text" name="inspiration" placeholder="inspiration">
+                <input type="text" name="inspiration" value="{{this.inspiration}}" placeholder="inspiration">
             </p>
             <p>
                 <button type="submit">NEXT</button>
             </p>
         </form>
-
+        {{#if message}}
+            <p>{{ message }}</p>
+        {{/if}}
     </div>
     {{>footer}}
 </body>
