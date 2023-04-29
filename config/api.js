@@ -6,22 +6,14 @@ const app = express();
 require("dotenv").config();
 
 // set path
-const pubDir = path.join(__dirname, "./public");
 const viewsDir = path.join(__dirname, "../templates/views");
 const partialsDir = path.join(__dirname, "../templates/partials");
 // set view engine
 app.set("view engine", "hbs");
 app.set("views", viewsDir);
 hbs.registerPartials(partialsDir);
-app.use(express.static(pubDir));
-
-// connect mongo
-// app.use(session({
-//   secret: 'foo',
-//   store: MongoStore.create({
-//     mongoUrl: config.mongodb
-//   })
-// }));
+// setting static file to use pic
+app.use('/static', express.static('static'));
 
 // json parser
 const bodyParser = require("body-parser");
