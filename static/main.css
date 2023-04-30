@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,700;1,400;1,500&display=swap');
+
+/* general */
+
+*, ::before, ::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 14px;
+    font-weight: 300;
+    color: #333;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    line-height: 50px;
+}
+
+h1 {
+    font-size: 700;
+}
+
+a {
+    text-decoration: none;
+}
+
+p {
+    line-height: 40px;
+}
+
+hr {
+    border: 1px dashed gray
+}
+
+.main-container-body {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: floralwhite;
+}
+
+/* page */
+/* header */
+
+.main-container-nav {
+    display: flex;
+    justify-content: space-between;
+    height: 70px;
+    border-bottom: 2px solid black;
+    background-color: white;
+
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 3;
+}
+
+.main-container-nav .logo-nav {
+    display: flex;
+    padding-left: 20px;
+    align-items: center;
+}
+
+.main-container-nav .logo-nav img {
+    padding-right: 10px;
+    height: 60px;
+}
+
+.main-container-nav .logo-nav h1 {
+    line-height: none;
+}
+
+.main-container-nav .logo-nav h1 a {
+    color: black;
+}
+
+.main-container-nav nav {
+    display: flex;
+    align-items: center;
+    padding-right: 10px;
+}
+
+.main-container-nav nav ul {
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+}
+
+.main-container-nav nav ul li {
+    padding: 0 10px;
+}
+
+.main-container-nav nav ul li a {
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 400;
+    color: black;
+}
+
+/* footer */
+
+.main-container-footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 3;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-top: 2px solid black;
+    background-color: white;
+}
+
+.main-container-footer .container-pic {
+    display: flex;
+    flex-direction: row;
+}
+
+.main-container-footer .container-pic img {
+    height: 37px;
+    padding-top: 10px;
+}
+
+.main-container-footer p {
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.main-container-footer p span a {
+    font-style: italic;
+    color: green;
+}

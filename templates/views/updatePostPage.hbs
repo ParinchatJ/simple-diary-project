@@ -5,18 +5,20 @@
     <title>Edit diary</title>
 </head>
 <body>
-    {{>header}}
-     <div class="main-container" style="background-color: rgb(184, 224, 211);">
-        <h1>Edit Your Diary</h1>
-        <p>แก้ไขความทรงจำ</p>
+    <div class="main-container-body">
+        {{>header}}
+        <div>
+            <h1>Edit Your Diary</h1>
+            <p>แก้ไขความทรงจำ</p>
 
-        {{!-- method with is pull value you choose --}}
-        {{#with postID}}
-        <form action="/post/update/{{this.id}}" method="post"> 
-            {{>form}}
-        </form>
-        {{/with}}
+            {{!-- method with is pull value you choose --}}
+            {{#with postID}}
+            <form action="/post/update/{{this.id}}" method="post"> 
+                {{>form}}
+            </form>
+            {{/with}}
+        </div>
+        {{>footer}}
     </div>
-    {{>footer}}
 </body>
 </html>

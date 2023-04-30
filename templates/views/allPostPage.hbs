@@ -5,12 +5,12 @@
     <title>Home</title>
 </head>
 <body>
-    <div class="main-container" style="background-color: rgb(184, 224, 211);">
+    <div class="main-container-body">
         {{>header}}
 
         {{!-- loop all post --}}
         {{#each allPost}}
-            <div style="background-color: rgb(232, 184, 213);">
+            <div>
                 <div>
                     <h4><a href="/post/{{ this.id }}">{{this.name}}</a></h4>
                     <div>

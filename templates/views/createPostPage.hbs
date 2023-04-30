@@ -5,17 +5,19 @@
     <title>Create diary</title>
 </head>
 <body>
-    {{>header}}
-     <div class="main-container" style="background-color: rgb(184, 224, 211);">
-        <h1>Create Your Diary</h1>
-        <p>มาเก็บความทรงจำกันเถอะ</p>
-        <form action="/post/new" method="post">
-            {{>form}}
-        </form>
-        {{#if message}}
-            <p>{{ message }}</p>
-        {{/if}}
+    <div class="main-container-body">
+        {{>header}}
+        <div>
+            <h1>Create Your Diary</h1>
+            <p>มาเก็บความทรงจำกันเถอะ</p>
+            <form action="/post/new" method="post">
+                {{>form}}
+            </form>
+            {{#if message}}
+                <p>{{ message }}</p>
+            {{/if}}
+        </div>
+        {{>footer}}
     </div>
-    {{>footer}}
 </body>
 </html>
