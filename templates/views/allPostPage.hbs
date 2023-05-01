@@ -7,25 +7,26 @@
 <body>
     <div class="main-container-body">
         {{>header}}
+        <div class="container-post">
+            {{!-- loop all post --}}
+            {{#each allPost}}
+                <div class="box-post">
+                    <div class="head-post">
+                        <h4><a href="/post/{{ this.id }}">{{this.name}}</a></h4>
+                        <div class="button-ud">
+                            <a href="/post/update/{{ this.id }}"><img src="/static/edit.png" style="height: 15px;" alt=""></a>
+                            <a href="/post/delete/{{ this.id }}"><img src="/static/delete.png" style="height: 15px;" alt=""></a>
+                        </div>
 
-        {{!-- loop all post --}}
-        {{#each allPost}}
-            <div>
-                <div>
-                    <h4><a href="/post/{{ this.id }}">{{this.name}}</a></h4>
-                    <div>
-                        <a href="/post/update/{{ this.id }}">Edit</a>
-                        <a href="/post/delete/{{ this.id }}">Delete</a>
                     </div>
-
+                    <p class="data-post">
+                        <span>{{this.date}}</span><br>
+                        <span>{{this.topic}}</span>
+                    </p>
                 </div>
-                <p>
-                    <span>{{this.date}} | </span>
-                    <span>{{this.topic}}</span>
-                </p>
-            </div>
-        {{/each}}
+            {{/each}}
+        </div>
+        {{>footer}}
     </div>
-    {{>footer}}
 </body>
 </html>
