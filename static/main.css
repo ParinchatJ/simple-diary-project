@@ -21,7 +21,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-    font-size: 700;
+    font-weight: 700;
 }
 
 a {
@@ -30,6 +30,7 @@ a {
 
 p {
     line-height: 40px;
+    font-size: 16px;
 }
 
 hr {
@@ -41,6 +42,60 @@ hr {
     height: 100%;
     width: 100%;
     background-color: floralwhite;
+}
+
+.container-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding-top: 17px;
+}
+
+input {
+    border: 2px solid black;
+    font-family: 'Roboto Mono', monospace;;
+    font-size: 14px;
+    text-align:center;
+    margin: 15px 0;
+    height: 35px;
+    width: 240px;
+}
+
+.button-form {
+    margin-top: 20px;
+    border: 2px solid black;
+    height: 40px;
+    width: 100px;
+    background-color: slateblue;
+}
+
+.errormessage {
+    padding-top: 20px;
+    color: red;
+    font-weight: 700;
+}
+
+.form-text {
+    font-size: 40px;
+}
+
+.textarea-form {
+    border: 2px solid black;
+    font-family: 'Roboto Mono', monospace;;
+    font-size: 14px;
+    text-align:center;
+    padding: 20px 0;
+    margin: 15px 0;
+    height: 70px;
+    width: 240px;
 }
 
 /* page */
@@ -68,7 +123,7 @@ hr {
 
 .main-container-nav .logo-nav img {
     padding-right: 10px;
-    height: 60px;
+    height: 50px;
 }
 
 .main-container-nav .logo-nav h1 {
@@ -93,6 +148,8 @@ hr {
 
 .main-container-nav nav ul li {
     padding: 0 10px;
+    display: flex;
+    align-items: center;
 }
 
 .main-container-nav nav ul li a {
@@ -100,6 +157,15 @@ hr {
     font-size: 16px;
     font-weight: 400;
     color: black;
+}
+
+.button-create-nav {
+    border: 2px solid black;
+    background-color: skyblue;
+    padding: 10px;
+    height: 35px;
+    display: flex;
+    align-items: center;
 }
 
 /* footer */
@@ -137,3 +203,6 @@ hr {
     font-style: italic;
     color: green;
 }
+
+/* knowYouPage */
+

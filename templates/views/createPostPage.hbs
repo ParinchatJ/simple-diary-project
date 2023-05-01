@@ -7,14 +7,14 @@
 <body>
     <div class="main-container-body">
         {{>header}}
-        <div>
-            <h1>Create Your Diary</h1>
+        <div class="container-form">
+            <h1 class="form-text">Create Your Diary</h1>
             <p>มาเก็บความทรงจำกันเถอะ</p>
             <form action="/post/new" method="post">
                 {{>form}}
             </form>
             {{#if message}}
-                <p>{{ message }}</p>
+                <p class="errormessage">{{ message }}</p>
             {{/if}}
         </div>
         {{>footer}}
