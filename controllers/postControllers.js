@@ -1,11 +1,18 @@
+const dayjs = require("dayjs");
 const PostModel = require("../models/postSchema");
 
 // GET ALL POST
 
 const getAllPost = async (req, res) => {
   const allPost = await PostModel.find().sort([["date", -1]]); // date now
+  
+  allPosts = allPost.map(post => {
+    const datePostFormat = dayjs(post.date).format('DD MM YYYY | HH:mm')
+    return { ...post, datePostFormat }
+  })
+
   if (!allPost) return res.status(204).json({ message: "No post found." });
-  res.render('allPostPage', { allPost });
+  res.render('allPostPage', { allPosts });
 };
 
 // CREATE POST
@@ -112,7 +119,9 @@ const getPostById = async (req, res) => {
       .json({ message: `No Post match ID ${req.params.id}.` });
   }
 
-  res.render('postId', {postID});
+  postID.datePostFormat = dayjs(postID.date).format('DD MM YYYY | HH:mm')
+
+  res.render('postId', { postID });
 
   // const { id } = req.params; // can use to tell url param
   // res.send(`Single post id = ${id}`);

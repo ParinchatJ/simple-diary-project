@@ -312,4 +312,67 @@ input {
 
 /* updateDone */
 
+.done-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 90px;
+}
 
+.done-page h1 {
+    margin-bottom: 10px;
+}
+
+.done-page button {
+    margin-top: 40px;
+    border: 2px solid #333;
+    height: 50px;
+    width: 170px;
+    background-color: darkgreen;
+}
+
+.done-page button a {
+    text-decoration: none;
+    color: white;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 15px;
+}
+
+/* postid page */
+
+.main-container-body-postId {
+    position: relative;
+    min-height: 100%;
+    width: 100%;
+
+    margin-bottom: -80px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.postId-page {
+    border: 2px solid #333;
+    background-color:rgb(245, 186, 186);
+
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    min-height: 100%;
+    width: 50%;
+    filter: drop-shadow(8px 8px 0px #333);
+    padding: 20px;
+}
+
+.postId-page h2 {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.error-page {
+    text-align: center;
+    margin-top: 60px;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 30px;
+}

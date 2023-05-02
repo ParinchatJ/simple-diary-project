@@ -23,20 +23,20 @@
             {{!-- เอาปุ่มแก้และลบมาใส่ตรงนี้ ตอนทำ css  --}}
         <div class="container-post">
             <h2 class="mydiary-head">MyDiary</h2> 
-            {{#each post3ID as |post3ID|}}
+            {{#each post3IDdata}}
             <div class="box-post">
                 <div class="head-post">
-                        <h4 class="head-post-msp">{{post3ID.name}}</h4>
+                        <h4 class="head-post-msp">{{this._doc.name}}</h4>
                         <div class="button-ud">
-                            <a href="/post/update/{{ this.id }}"><img src="/static/edit.png" style="height: 15px;" alt=""></a>
-                            <a href="/post/delete/{{ this.id }}"><img src="/static/delete.png" style="height: 15px;" alt=""></a>
+                            <a href="/post/update/{{ this._doc._id }}"><img src="/static/edit.png" style="height: 15px;" alt=""></a>
+                            <a href="/post/delete/{{ this._doc._id }}"><img src="/static/delete.png" style="height: 15px;" alt=""></a>
                         </div>
 
                     </div>
                 <p class="data-post">
-                    <span>{{post3ID.date}}</span><br>
-                    <span>{{post3ID.topic}}</span><br>
-                    <span>{{post3ID.tell_story}}</span>
+                    <span>Date : {{this.datePostFormat}}</span><br>
+                    <span>Topic : {{this._doc.topic}}</span><br>
+                    <span>Story : {{this._doc.tell_story}}</span>
                 </p>
             </div>
             {{/each}}
