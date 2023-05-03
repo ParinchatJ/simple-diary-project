@@ -5,6 +5,13 @@ const path = require("path");
 const app = express();
 require("dotenv").config();
 
+if (config.isVercel) {
+    app.use(async (req, res, next) => {
+      await mongoose.connect(MONGODB_URI);
+      return next();
+    });
+  }
+
 // set path
 const viewsDir = path.join(__dirname, "../templates/views");
 const partialsDir = path.join(__dirname, "../templates/partials");
