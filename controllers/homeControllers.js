@@ -50,8 +50,6 @@ const getMyspace = async (req, res) => {
     return { ...post, datePostFormat }
   })
 
-  console.log(post3IDdata)
-
   res.render('myspacePage', {user, post3IDdata});
 };
 
